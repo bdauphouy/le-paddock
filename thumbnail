@@ -1,0 +1,18 @@
+{
+  "error": {
+    "code": 400,
+    "message": "Invalid value at 'thumbnail_fov' (TYPE_INT32), \"100=w1600-h1200-k-no\"",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.BadRequest",
+        "fieldViolations": [
+          {
+            "field": "thumbnail_fov",
+            "description": "Invalid value at 'thumbnail_fov' (TYPE_INT32), \"100=w1600-h1200-k-no\""
+          }
+        ]
+      }
+    ]
+  }
+}
