@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/primitives/Button";
 import { Logo } from "@/components/primitives/Logo";
 import { FacebookIcon, InstagramIcon } from "@/components/primitives/icons";
-import { BUSINESS } from "@/lib/business";
+import type { SiteSettings } from "@/sanity/lib/types";
 
 const NAV_LINKS = [
   { href: "#about", label: "L'histoire" },
@@ -18,9 +18,11 @@ const NAV_LINKS = [
 export function MobileNav({
   open,
   onClose,
+  settings,
 }: {
   open: boolean;
   onClose: () => void;
+  settings: SiteSettings;
 }) {
   return (
     <AnimatePresence>
@@ -67,27 +69,35 @@ export function MobileNav({
                 {link.label}
               </a>
             ))}
-            <a
-              href={BUSINESS.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-h-11 flex items-center gap-3 text-title-md text-ink py-4"
-            >
-              <FacebookIcon className="h-5 w-5" />
-              Facebook
-            </a>
-            <a
-              href={BUSINESS.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-h-11 flex items-center gap-3 text-title-md text-ink py-4"
-            >
-              <InstagramIcon className="h-5 w-5" />
-              Instagram
-            </a>
+            {settings.facebookUrl ? (
+              <a
+                href={settings.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-11 flex items-center gap-3 text-title-md text-ink py-4"
+              >
+                <FacebookIcon className="h-5 w-5" />
+                Facebook
+              </a>
+            ) : null}
+            {settings.instagramUrl ? (
+              <a
+                href={settings.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-11 flex items-center gap-3 text-title-md text-ink py-4"
+              >
+                <InstagramIcon className="h-5 w-5" />
+                Instagram
+              </a>
+            ) : null}
             <div className="mt-6">
-              <Button href={BUSINESS.phoneHref} variant="primary" className="w-full">
-                Réserver — {BUSINESS.phoneDisplay}
+              <Button
+                href={settings.phoneHref}
+                variant="primary"
+                className="w-full"
+              >
+                Réserver — {settings.phoneDisplay}
               </Button>
             </div>
           </nav>

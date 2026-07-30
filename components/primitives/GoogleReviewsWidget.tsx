@@ -1,11 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import { TESTIMONIALS } from "@/lib/reviews";
+import type { Testimonial } from "@/sanity/lib/types";
 import { GoogleReviewCard } from "./GoogleReviewCard";
 import { ChevronIcon } from "./icons";
 
-export function GoogleReviewsWidget() {
+export function GoogleReviewsWidget({
+  testimonials,
+}: {
+  testimonials: Testimonial[];
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   function scrollByCard(direction: 1 | -1) {
@@ -22,7 +26,7 @@ export function GoogleReviewsWidget() {
         ref={trackRef}
         className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth p-6"
       >
-        {TESTIMONIALS.map((testimonial, index) => (
+        {testimonials.map((testimonial, index) => (
           <GoogleReviewCard
             key={testimonial.quote}
             {...testimonial}

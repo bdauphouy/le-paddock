@@ -2,8 +2,11 @@ import { Container } from "@/components/primitives/Container";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import { PhotoFrame } from "@/components/primitives/PhotoFrame";
 import { Reveal } from "@/components/primitives/Reveal";
+import { getHomepage } from "@/sanity/lib/fetch";
 
-export function About() {
+export async function About() {
+  const { about } = await getHomepage();
+
   return (
     <section id="about" aria-labelledby="about-heading" className="py-section">
       <Container>
@@ -11,15 +14,12 @@ export function About() {
           <Reveal>
             <SectionHeading
               id="about-heading"
-              eyebrow="L'histoire"
-              title="Idéalement collé au karting."
-              sub="Le Paddock n'est pas un restaurant qui parle de vitesse — il est posé juste à côté. La terrasse et le rooftop donnent directement sur la piste du circuit Solokart de Plessé, l'un des plus grands circuits de karting d'Europe : les moteurs tournent d'un côté de la baie vitrée, les tables de l'autre."
+              eyebrow={about.eyebrow}
+              title={about.title}
+              sub={about.sub}
             />
             <p className="mt-6 text-body-md text-muted max-w-lg">
-              À l&apos;intérieur, l&apos;ambiance garage assumée : canapés
-              Chesterfield, écusson Porsche au mur, jantes, bidons et
-              plaques émaillées vintage récupérées comme autant de trophées.
-              On y vient pour la vue sur la piste autant que pour la carte.
+              {about.paragraph}
             </p>
           </Reveal>
 

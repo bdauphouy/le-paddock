@@ -93,7 +93,7 @@ export function MenuTabsCard({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
             >
-              {active.items.length > 0 ? (
+              {active.items && active.items.length > 0 ? (
                 <motion.ul
                   variants={listVariants}
                   initial="hidden"

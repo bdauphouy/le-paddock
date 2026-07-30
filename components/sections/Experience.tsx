@@ -2,6 +2,7 @@ import { Container } from "@/components/primitives/Container";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import { PhotoFrame } from "@/components/primitives/PhotoFrame";
 import { Reveal } from "@/components/primitives/Reveal";
+import { getHomepage } from "@/sanity/lib/fetch";
 
 const GALLERY = [
   {
@@ -38,16 +39,18 @@ const GALLERY = [
   },
 ];
 
-export function Experience() {
+export async function Experience() {
+  const { experience } = await getHomepage();
+
   return (
     <section id="experience" aria-labelledby="experience-heading" className="py-section">
       <Container>
         <Reveal>
           <SectionHeading
             id="experience-heading"
-            eyebrow="L'expérience"
-            title="Du casque au cocktail."
-            sub="Après une session sur la piste ou simplement pour profiter du coucher de soleil, le rooftop du Paddock prend le relais : lumières chaudes, déco garage vintage assumée, et une ambiance qui dure jusqu'au bout de la soirée."
+            eyebrow={experience.eyebrow}
+            title={experience.title}
+            sub={experience.sub ?? undefined}
           />
         </Reveal>
 

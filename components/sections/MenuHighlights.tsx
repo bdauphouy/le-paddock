@@ -2,9 +2,18 @@ import { Container } from "@/components/primitives/Container";
 import { MenuTabsCard } from "@/components/primitives/MenuTabsCard";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
-import { DRINKS_MENU, FOOD_MENU, LUNCH_MENU_INTRO } from "@/lib/menu";
+import { getDrinksMenu, getFoodMenu, getHomepage } from "@/sanity/lib/fetch";
 
-export function MenuHighlights() {
+export async function MenuHighlights() {
+  const [foodMenu, drinksMenu, { menu }] = await Promise.all([
+    getFoodMenu(),
+    getDrinksMenu(),
+    getHomepage(),
+  ]);
+  const lunchMenuIntro = foodMenu.lunchMenuIntro ?? [];
+  const foodCategories = foodMenu.categories ?? [];
+  const drinksCategories = drinksMenu.categories ?? [];
+
   return (
     <section
       id="carte"
@@ -15,9 +24,9 @@ export function MenuHighlights() {
         <Reveal>
           <SectionHeading
             id="carte-heading"
-            eyebrow="La carte"
-            title="Même la carte roule sur le thème."
-            sub="Menu midi, tapas et bar à cocktails — la carte complète du Paddock, sans rien couper. Naviguez par catégorie ci-dessous."
+            eyebrow={menu.eyebrow}
+            title={menu.title}
+            sub={menu.sub ?? undefined}
           />
         </Reveal>
 
@@ -37,7 +46,7 @@ export function MenuHighlights() {
                     Nos plats
                   </h3>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {LUNCH_MENU_INTRO.map((entry) => (
+                    {lunchMenuIntro.map((entry) => (
                       <span
                         key={entry.label}
                         className="rounded-pill bg-ink-on-paper/5 px-3 py-1 text-caption text-muted-on-paper"
@@ -48,7 +57,7 @@ export function MenuHighlights() {
                   </div>
                 </div>
               }
-              categories={FOOD_MENU}
+              categories={foodCategories}
             />
           </Reveal>
 
@@ -66,7 +75,7 @@ export function MenuHighlights() {
                   </h3>
                 </div>
               }
-              categories={DRINKS_MENU}
+              categories={drinksCategories}
             />
           </Reveal>
         </div>

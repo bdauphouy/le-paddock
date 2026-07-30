@@ -4,13 +4,19 @@ import { Button } from "@/components/primitives/Button";
 import { Container } from "@/components/primitives/Container";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
-import { BUSINESS } from "@/lib/business";
+import type { Homepage, SiteSettings } from "@/sanity/lib/types";
 import { useState, type FormEvent } from "react";
 
 const fieldClasses =
   "h-11 w-full min-w-0 rounded-md border border-hairline bg-surface px-4 text-body-md text-ink placeholder:text-muted focus:border-action-strong focus:outline-none transition-colors";
 
-export function PrivatizationCta() {
+export function PrivatizationCta({
+  settings,
+  content,
+}: {
+  settings: SiteSettings;
+  content: Homepage["privatization"];
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -34,7 +40,7 @@ export function PrivatizationCta() {
       .filter(Boolean)
       .join("\n");
 
-    window.location.href = `mailto:${BUSINESS.email}?subject=${encodeURIComponent(
+    window.location.href = `mailto:${settings.email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
   }
@@ -50,9 +56,9 @@ export function PrivatizationCta() {
           <Reveal>
             <SectionHeading
               id="privatisation-heading"
-              eyebrow="Réservation & événements privés"
-              title="Réservez, ou privatisez Le Paddock."
-              sub="Une table pour ce soir, ou tout le lieu pour votre événement — anniversaire, séminaire, sortie d'entreprise, after-course entre amis. Le Paddock se privatise en journée comme en soirée."
+              eyebrow={content.eyebrow}
+              title={content.title}
+              sub={content.sub ?? undefined}
             />
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-lg border border-hairline bg-surface p-5">
@@ -60,8 +66,8 @@ export function PrivatizationCta() {
                 <p className="text-title-sm text-ink">Une table, ce soir ?</p>
                 <p className="text-body-sm text-muted">Un appel suffit.</p>
               </div>
-              <Button href={BUSINESS.phoneHref} variant="primary">
-                Réserver — {BUSINESS.phoneDisplay}
+              <Button href={settings.phoneHref} variant="primary">
+                Réserver — {settings.phoneDisplay}
               </Button>
             </div>
 
@@ -69,10 +75,10 @@ export function PrivatizationCta() {
               Pour un événement privé, décrivez votre projet ci-contre, ou
               écrivez-nous directement à{" "}
               <a
-                href={`mailto:${BUSINESS.email}`}
+                href={`mailto:${settings.email}`}
                 className="text-action-strong hover:text-action transition-colors"
               >
-                {BUSINESS.email}
+                {settings.email}
               </a>
               .
             </p>
@@ -193,7 +199,7 @@ export function PrivatizationCta() {
               </button>
               <p className="text-caption text-muted">
                 L&apos;envoi ouvre votre messagerie avec les informations
-                pré-remplies, à destination de {BUSINESS.email}.
+                pré-remplies, à destination de {settings.email}.
               </p>
             </form>
           </Reveal>

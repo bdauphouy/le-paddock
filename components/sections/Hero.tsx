@@ -5,19 +5,26 @@ import { Button } from "@/components/primitives/Button";
 import { Container } from "@/components/primitives/Container";
 import { Parallax } from "@/components/primitives/Parallax";
 import { Ticker } from "@/components/primitives/Ticker";
-import { BUSINESS } from "@/lib/business";
-import { EVENT_TICKER_ITEMS } from "@/lib/events";
+import type { Homepage, SiteSettings, SpecialEvent } from "@/sanity/lib/types";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 
-const HIGHLIGHTS = [
-  "Rooftop & terrasse",
-  "Cuisine maison",
-  "Vue sur le circuit",
-];
-
-export function Hero() {
+export function Hero({
+  settings,
+  events,
+  content,
+}: {
+  settings: SiteSettings;
+  events: SpecialEvent[];
+  content: Homepage["hero"];
+}) {
   const prefersReduced = useReducedMotion();
+  const tickerItems = events.map(
+    (event) =>
+      `Événement · ${event.label} · ${event.date}${
+        event.detail ? ` · ${event.detail}` : ""
+      }`,
+  );
 
   return (
     <section
@@ -39,9 +46,13 @@ export function Hero() {
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ground via-ground/55 to-ground/40" />
 
-      <div className="pt-16">
-        <Ticker items={EVENT_TICKER_ITEMS} />
-      </div>
+      {tickerItems.length > 0 ? (
+        <div className="pt-16">
+          <Ticker items={tickerItems} />
+        </div>
+      ) : (
+        <div className="pt-16" />
+      )}
 
       <div className="relative flex flex-1 items-center">
         <Container>
@@ -52,26 +63,24 @@ export function Hero() {
             className="max-w-2xl"
           >
             <p className="text-caption-uppercase text-action-strong mb-4">
-              Plessé · à côté du circuit Solokart
+              {content.eyebrow}
             </p>
             <h1 className="font-display text-display-lg md:text-display-xl text-ink">
-              Vue sur la piste, verre à la main.
+              {content.title}
             </h1>
             <p className="mt-6 text-body-md text-muted max-w-lg">
-              Le Paddock, restaurant et bar à tapas idéalement collé au karting.
-              Terrasse, rooftop et cuisine généreuse, du déjeuner jusqu&apos;au
-              bout de la soirée.
+              {content.paragraph}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button href={BUSINESS.phoneHref} variant="primary">
-                Réserver — {BUSINESS.phoneDisplay}
+              <Button href={settings.phoneHref} variant="primary">
+                Réserver — {settings.phoneDisplay}
               </Button>
               <Button href="#about" variant="secondary">
                 Découvrir Le Paddock
               </Button>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              {HIGHLIGHTS.map((item) => (
+              {(content.highlights ?? []).map((item) => (
                 <Badge key={item} variant="accent">
                   {item}
                 </Badge>

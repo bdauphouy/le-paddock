@@ -1,6 +1,9 @@
 allowBuilds:
+  esbuild: true
   sharp: false
   unrs-resolver: false
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+patchedDependencies:
+  swr@2.4.2: patches/swr@2.4.2.patch

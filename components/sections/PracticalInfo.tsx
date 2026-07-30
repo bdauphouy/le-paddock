@@ -2,9 +2,12 @@ import { Container } from "@/components/primitives/Container";
 import { GoogleMapEmbed } from "@/components/primitives/GoogleMapEmbed";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
-import { BUSINESS, GOOGLE_MAPS_QUERY, OPENING_HOURS } from "@/lib/business";
+import { getHomepage } from "@/sanity/lib/fetch";
+import type { SiteSettings } from "@/sanity/lib/types";
 
-export function PracticalInfo() {
+export async function PracticalInfo({ settings }: { settings: SiteSettings }) {
+  const { practicalInfo } = await getHomepage();
+
   return (
     <section
       id="infos"
@@ -15,7 +18,7 @@ export function PracticalInfo() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
           <Reveal>
             <GoogleMapEmbed
-              query={GOOGLE_MAPS_QUERY}
+              query={`${settings.fullName}, ${settings.addressLine}`}
               title="Localisation du Paddock à Plessé"
               className="aspect-[4/3]"
             />
@@ -24,8 +27,8 @@ export function PracticalInfo() {
           <Reveal delay={0.1}>
             <SectionHeading
               id="infos-heading"
-              eyebrow="Infos pratiques"
-              title="Nous trouver."
+              eyebrow={practicalInfo.eyebrow}
+              title={practicalInfo.title}
             />
 
             <dl className="mt-8 space-y-6">
@@ -35,7 +38,7 @@ export function PracticalInfo() {
                 </dt>
                 <dd>
                   <address className="not-italic text-title-sm text-ink">
-                    {BUSINESS.name} — {BUSINESS.addressLine}
+                    {settings.name} — {settings.addressLine}
                   </address>
                 </dd>
               </div>
@@ -46,7 +49,7 @@ export function PracticalInfo() {
                 </dt>
                 <dd>
                   <ul>
-                    {OPENING_HOURS.map(({ day, hours }) => (
+                    {(settings.openingHours ?? []).map(({ day, hours }) => (
                       <li
                         key={day}
                         className="flex items-baseline justify-between gap-4 border-b border-hairline/70 py-2 last:border-none"

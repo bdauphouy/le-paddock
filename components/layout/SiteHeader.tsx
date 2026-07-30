@@ -4,7 +4,7 @@ import { Button } from "@/components/primitives/Button";
 import { Container } from "@/components/primitives/Container";
 import { Logo } from "@/components/primitives/Logo";
 import { FacebookIcon, InstagramIcon } from "@/components/primitives/icons";
-import { BUSINESS } from "@/lib/business";
+import type { SiteSettings } from "@/sanity/lib/types";
 import { useState } from "react";
 import { MobileNav } from "./MobileNav";
 
@@ -17,7 +17,7 @@ const NAV_LINKS = [
   { href: "#infos", label: "Infos pratiques" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ settings }: { settings: SiteSettings }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -44,26 +44,30 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <a
-              href={BUSINESS.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Le Paddock sur Facebook"
-              className="flex items-center justify-center text-muted hover:text-action-strong transition-colors"
-            >
-              <FacebookIcon className="h-5 w-5" />
-            </a>
-            <a
-              href={BUSINESS.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Le Paddock sur Instagram"
-              className="flex items-center justify-center text-muted hover:text-action-strong transition-colors"
-            >
-              <InstagramIcon className="h-5 w-5" />
-            </a>
-            <Button href={BUSINESS.phoneHref} variant="primary">
-              {BUSINESS.phoneDisplay}
+            {settings.facebookUrl ? (
+              <a
+                href={settings.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Le Paddock sur Facebook"
+                className="flex items-center justify-center text-muted hover:text-action-strong transition-colors"
+              >
+                <FacebookIcon className="h-5 w-5" />
+              </a>
+            ) : null}
+            {settings.instagramUrl ? (
+              <a
+                href={settings.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Le Paddock sur Instagram"
+                className="flex items-center justify-center text-muted hover:text-action-strong transition-colors"
+              >
+                <InstagramIcon className="h-5 w-5" />
+              </a>
+            ) : null}
+            <Button href={settings.phoneHref} variant="primary">
+              {settings.phoneDisplay}
             </Button>
           </div>
 
@@ -91,7 +95,11 @@ export function SiteHeader() {
         </Container>
       </header>
 
-      <MobileNav open={open} onClose={() => setOpen(false)} />
+      <MobileNav
+        open={open}
+        onClose={() => setOpen(false)}
+        settings={settings}
+      />
     </>
   );
 }
