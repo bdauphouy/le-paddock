@@ -10,7 +10,7 @@ import { useState, type FormEvent } from "react";
 const fieldClasses =
   "h-11 w-full min-w-0 rounded-md border border-hairline bg-surface px-4 text-body-md text-ink placeholder:text-muted focus:border-action-strong focus:outline-none transition-colors";
 
-export function PrivatizationCta({
+export function PrivatizationCtaForm({
   settings,
   content,
 }: {

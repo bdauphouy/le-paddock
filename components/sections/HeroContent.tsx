@@ -9,7 +9,7 @@ import type { Homepage, SiteSettings, SpecialEvent } from "@/sanity/lib/types";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 
-export function Hero({
+export function HeroContent({
   settings,
   events,
   content,
