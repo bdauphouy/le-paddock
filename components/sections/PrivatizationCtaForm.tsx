@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/primitives/Button";
 import { Container } from "@/components/primitives/Container";
+import { ReservationButton } from "@/components/primitives/ReservationButton";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import type { Homepage, SiteSettings } from "@/sanity/lib/types";
@@ -66,9 +67,16 @@ export function PrivatizationCtaForm({
                 <p className="text-title-sm text-ink">Une table, ce soir ?</p>
                 <p className="text-body-sm text-muted">Un appel suffit.</p>
               </div>
-              <Button href={settings.phoneHref} variant="primary">
-                Réserver — {settings.phoneDisplay}
-              </Button>
+              <div className="flex flex-wrap items-center gap-3">
+                <Button href={settings.phoneHref} variant="primary">
+                  Réserver — {settings.phoneDisplay}
+                </Button>
+                {settings.calLink ? (
+                  <ReservationButton calLink={settings.calLink} variant="secondary">
+                    Réserver en ligne
+                  </ReservationButton>
+                ) : null}
+              </div>
             </div>
 
             <p className="mt-6 text-body-sm text-muted">

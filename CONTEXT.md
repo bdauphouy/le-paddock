@@ -21,8 +21,12 @@ A customer quote curated by the venue owner in Sanity Studio, name + quote text.
 _Avoid_: Google review, avis (the French section label, not a distinct concept), review
 
 **Privatization**:
-Renting the venue for a private event (birthday, corporate event, etc.), requested via a form that opens a pre-filled `mailto:` link. Not the economic/political sense of the word.
-_Avoid_: Booking (a booking is a single reservation; privatization is renting the whole venue)
+Renting the venue for a private event (birthday, corporate event, etc.), requested via a form that opens a pre-filled `mailto:` link. Not the economic/political sense of the word. Distinct from Reservation — see below.
+_Avoid_: Booking (see Reservation)
+
+**Reservation**:
+Booking a table for regular service, made by a visitor through the embedded Cal.com widget (see ADR-0002). Lives in the same page section as Privatization, as a separate adjacent flow ("a table tonight" vs. "an event to privatize") — not a form of Privatization, and not itself a Sanity document; the booking data lives in Cal.com.
+_Avoid_: Booking (ambiguous with Privatization — always say Reservation for a table, Privatization for the whole venue)
 
 **Menu Category** / **Menu Item** / **Price Tier**:
 A Menu (Food or Drinks) is a flat list of Menu Categories, each holding Menu Items. A Menu Item usually has a single `price`, but some (e.g. a bottle available in two sizes) instead carry an array of Price Tiers (`label` + `value`) — the two are mutually exclusive per item, not layered.

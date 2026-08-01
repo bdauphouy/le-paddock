@@ -10,7 +10,8 @@ export const siteSettingsQuery = defineQuery(`
     email,
     facebookUrl,
     instagramUrl,
-    openingHours[]{ day, hours }
+    openingHours[]{ day, hours },
+    calLink
   }
 `);
 

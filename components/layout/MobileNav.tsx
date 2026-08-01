@@ -85,7 +85,7 @@ export function MobileNav({
             ) : null}
             <div className="mt-6">
               <Button
-                href={settings.phoneHref}
+                href="#privatisation"
                 variant="primary"
                 className="w-full"
               >

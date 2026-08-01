@@ -72,7 +72,7 @@ export function HeroContent({
               {content.paragraph}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button href={settings.phoneHref} variant="primary">
+              <Button href="#privatisation" variant="primary">
                 Réserver — {settings.phoneDisplay}
               </Button>
               <Button href="#about" variant="secondary">

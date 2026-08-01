@@ -60,6 +60,13 @@ export const siteSettings = defineType({
       type: "array",
       of: [{ type: "openingHour" }],
     }),
+    defineField({
+      name: "calLink",
+      title: "Lien de réservation Cal.com",
+      type: "string",
+      description:
+        'Le "cal link" Cal.com, au format "nom-utilisateur" ou "nom-utilisateur/type-evenement" — pas une URL complète. Ex. "le-paddock" ou "le-paddock/table". Laissez vide pour masquer le bouton de réservation en ligne.',
+    }),
   ],
   preview: {
     select: { title: "name" },

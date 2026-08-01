@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "on-color" | "text-link";
+export type ButtonVariant = "primary" | "secondary" | "on-color" | "text-link";
 
-const variantClasses: Record<ButtonVariant, string> = {
+export const buttonVariantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-action text-ink hover:bg-action-strong",
   secondary:
@@ -13,8 +13,12 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-transparent text-ink underline underline-offset-4 decoration-hairline hover:decoration-action-strong hover:text-action-strong px-0 h-auto",
 };
 
-const baseClasses =
+export const buttonBaseClasses =
   "inline-flex h-11 min-h-11 items-center justify-center gap-2 rounded-md px-5 text-button transition-colors duration-200";
+
+export function getButtonClasses(variant: ButtonVariant, className = "") {
+  return `${buttonBaseClasses} ${buttonVariantClasses[variant]} ${className}`;
+}
 
 export function Button({
   href,
@@ -27,7 +31,7 @@ export function Button({
   className?: string;
   children: React.ReactNode;
 }) {
-  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
+  const classes = getButtonClasses(variant, className);
   const isExternalOrProtocol = /^(https?:|tel:|mailto:)/.test(href);
 
   if (isExternalOrProtocol) {

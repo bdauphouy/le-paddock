@@ -12,6 +12,7 @@ export type SiteSettings = {
   facebookUrl: string | null;
   instagramUrl: string | null;
   openingHours: OpeningHour[] | null;
+  calLink: string | null;
 };
 
 export type SpecialEvent = {
