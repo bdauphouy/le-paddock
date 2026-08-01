@@ -1,5 +1,6 @@
 import { Container } from "@/components/primitives/Container";
 import { FacebookIcon, InstagramIcon } from "@/components/primitives/icons";
+import { NAV_LINKS } from "@/lib/nav";
 import type { SiteSettings } from "@/sanity/lib/types";
 import { Logo } from "../primitives/Logo";
 
@@ -45,42 +46,15 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             className="flex flex-col gap-3 text-body-sm text-muted"
             aria-label="Navigation du pied de page"
           >
-            <a
-              href="#about"
-              className="hover:text-action-strong transition-colors"
-            >
-              L&apos;histoire
-            </a>
-            <a
-              href="#carte"
-              className="hover:text-action-strong transition-colors"
-            >
-              La carte
-            </a>
-            <a
-              href="#experience"
-              className="hover:text-action-strong transition-colors"
-            >
-              L&apos;expérience
-            </a>
-            <a
-              href="#avis"
-              className="hover:text-action-strong transition-colors"
-            >
-              Avis
-            </a>
-            <a
-              href="#privatisation"
-              className="hover:text-action-strong transition-colors"
-            >
-              Privatiser
-            </a>
-            <a
-              href="#infos"
-              className="hover:text-action-strong transition-colors"
-            >
-              Infos pratiques
-            </a>
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:text-action-strong transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <div className="text-body-sm text-muted space-y-2">

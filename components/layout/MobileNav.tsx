@@ -4,16 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/primitives/Button";
 import { Logo } from "@/components/primitives/Logo";
 import { FacebookIcon, InstagramIcon } from "@/components/primitives/icons";
+import { NAV_LINKS } from "@/lib/nav";
 import type { SiteSettings } from "@/sanity/lib/types";
-
-const NAV_LINKS = [
-  { href: "#about", label: "L'histoire" },
-  { href: "#carte", label: "La carte" },
-  { href: "#experience", label: "L'expérience" },
-  { href: "#avis", label: "Avis" },
-  { href: "#privatisation", label: "Privatiser" },
-  { href: "#infos", label: "Infos pratiques" },
-];
 
 export function MobileNav({
   open,

@@ -1,541 +1,145 @@
----
-version: alpha
-name: Clay-design-analysis
-description: A vibrant claymation-meets-data interface for Clay.com (GTM data-orchestration platform). Anchors on white canvas with dark-navy primary CTAs, custom rounded display type, and saturated single-color feature cards — hot pink, deep teal, lavender, peach, ochre — that punctuate long-scroll explainer pages. Brand voltage comes from 3D-rendered claymation illustrations (mountains, characters, mascots) used as full-bleed hero artifacts and the bright multi-color card surfaces showing product UI fragments.
+# DESIGN.md
 
-colors:
-  primary: "#0a0a0a"
-  primary-active: "#1f1f1f"
-  primary-disabled: "#e5e5e5"
-  ink: "#0a0a0a"
-  body: "#3a3a3a"
-  body-strong: "#1a1a1a"
-  muted: "#6a6a6a"
-  muted-soft: "#9a9a9a"
-  hairline: "#e5e5e5"
-  hairline-soft: "#f0f0f0"
-  canvas: "#fffaf0"
-  surface-soft: "#faf5e8"
-  surface-card: "#f5f0e0"
-  surface-strong: "#ebe6d6"
-  surface-dark: "#0a1a1a"
-  surface-dark-elevated: "#1a2a2a"
-  on-primary: "#ffffff"
-  on-dark: "#ffffff"
-  on-dark-soft: "#a0a0a0"
-  brand-pink: "#ff4d8b"
-  brand-teal: "#1a3a3a"
-  brand-lavender: "#b8a4ed"
-  brand-peach: "#ffb084"
-  brand-ochre: "#e8b94a"
-  brand-mint: "#a4d4c5"
-  brand-coral: "#ff6b5a"
-  success: "#22c55e"
-  warning: "#f59e0b"
-  error: "#ef4444"
+The visual language for Le Paddock, a bar/restaurant/tapas site. This document is generated from what's actually implemented — it has no tokens or components that don't exist in the code.
 
-typography:
-  display-xl:
-    fontFamily: "Plain Black, Inter, sans-serif"
-    fontSize: 72px
-    fontWeight: 500
-    lineHeight: 1
-    letterSpacing: -2.5px
-  display-lg:
-    fontFamily: "Plain Black, Inter, sans-serif"
-    fontSize: 56px
-    fontWeight: 500
-    lineHeight: 1.05
-    letterSpacing: -2px
-  display-md:
-    fontFamily: "Plain Black, Inter, sans-serif"
-    fontSize: 40px
-    fontWeight: 500
-    lineHeight: 1.1
-    letterSpacing: -1px
-  display-sm:
-    fontFamily: "Plain Black, Inter, sans-serif"
-    fontSize: 32px
-    fontWeight: 500
-    lineHeight: 1.15
-    letterSpacing: -0.5px
-  title-lg:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 24px
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: -0.3px
-  title-md:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 18px
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: 0
-  title-sm:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 16px
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: 0
-  body-md:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: 0
-  body-sm:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: 0
-  caption:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 13px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
-  caption-uppercase:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 12px
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: 1.5px
-  button:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 14px
-    fontWeight: 600
-    lineHeight: 1
-    letterSpacing: 0
-  nav-link:
-    fontFamily: "Inter, sans-serif"
-    fontSize: 14px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
+**Source of truth is `app/globals.css`.** Every token below is a Tailwind v4 `@theme` variable defined there; the tables just give you the value and where it's used without opening the CSS file. **If you change a token in `app/globals.css`, update the matching row here in the same commit** — this file drifted out of sync with the code once already (it used to document an unrelated SaaS product's design system), and the fix is to never let the two move independently again.
 
-rounded:
-  xs: 6px
-  sm: 8px
-  md: 12px
-  lg: 16px
-  xl: 24px
-  pill: 9999px
-  full: 9999px
-
-spacing:
-  xxs: 4px
-  xs: 8px
-  sm: 12px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 48px
-  section: 96px
-
-components:
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: 12px 20px
-    height: 44px
-  button-primary-active:
-    backgroundColor: "{colors.primary-active}"
-    textColor: "{colors.on-primary}"
-    rounded: "{rounded.md}"
-  button-primary-disabled:
-    backgroundColor: "{colors.primary-disabled}"
-    textColor: "{colors.muted}"
-    rounded: "{rounded.md}"
-  button-secondary:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: 12px 20px
-    height: 44px
-  button-on-color:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: 12px 20px
-    height: 44px
-  button-text-link:
-    backgroundColor: transparent
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-  text-link:
-    backgroundColor: transparent
-    textColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-  top-nav:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.nav-link}"
-    height: 64px
-  hero-band:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.display-xl}"
-    padding: 96px
-  hero-illustration-card:
-    backgroundColor: "{colors.surface-soft}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.xl}"
-  feature-card-pink:
-    backgroundColor: "{colors.brand-pink}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  feature-card-teal:
-    backgroundColor: "{colors.brand-teal}"
-    textColor: "{colors.on-dark}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  feature-card-lavender:
-    backgroundColor: "{colors.brand-lavender}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  feature-card-peach:
-    backgroundColor: "{colors.brand-peach}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  feature-card-ochre:
-    backgroundColor: "{colors.brand-ochre}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  feature-card-cream:
-    backgroundColor: "{colors.surface-card}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-  product-mockup-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.lg}"
-    padding: 24px
-  testimonial-card:
-    backgroundColor: "{colors.surface-card}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.lg}"
-    padding: 24px
-  pricing-tier-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-lg}"
-    rounded: "{rounded.lg}"
-    padding: 32px
-  pricing-tier-card-featured:
-    backgroundColor: "{colors.brand-teal}"
-    textColor: "{colors.on-dark}"
-    typography: "{typography.title-lg}"
-    rounded: "{rounded.lg}"
-    padding: 32px
-  text-input:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.md}"
-    padding: 12px 16px
-    height: 44px
-  text-input-focused:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.md}"
-  category-tab:
-    backgroundColor: transparent
-    textColor: "{colors.muted}"
-    typography: "{typography.nav-link}"
-    rounded: "{rounded.pill}"
-    padding: 8px 16px
-  category-tab-active:
-    backgroundColor: "{colors.surface-card}"
-    textColor: "{colors.ink}"
-    typography: "{typography.nav-link}"
-    rounded: "{rounded.pill}"
-  badge-pill:
-    backgroundColor: "{colors.surface-card}"
-    textColor: "{colors.ink}"
-    typography: "{typography.caption}"
-    rounded: "{rounded.pill}"
-    padding: 4px 12px
-  expert-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-md}"
-    rounded: "{rounded.lg}"
-    padding: 24px
-  cta-band-illustrated:
-    backgroundColor: "{colors.surface-soft}"
-    textColor: "{colors.ink}"
-    typography: "{typography.display-md}"
-    rounded: "{rounded.xl}"
-    padding: 80px
-  footer:
-    backgroundColor: "{colors.surface-soft}"
-    textColor: "{colors.body}"
-    typography: "{typography.body-sm}"
-    padding: 80px
----
-
-## Overview
-
-Clay.com is the most playful B2B SaaS interface in the GTM-data category. The base atmosphere is **cream-tinted white canvas** (`{colors.canvas}` — #fffaf0) holding dark-navy ink type and **3D-rendered claymation illustrations** (mountains, mascot characters, peach/ochre/lavender landscapes) as the dominant brand voltage. Where most data-platform brands play it cool with grids and gradients, Clay leans hard into hand-crafted-looking 3D illustrations and saturated single-color feature cards.
-
-Type voice runs **Plain Black** (or substituted with Inter weight 500-600) — a custom rounded display face used at very large sizes (72px hero) with negative letter-spacing. Body type uses Inter at standard weights. The display weight stays at 500, never bolder — the rounded character of the typeface gives it warmth without needing weight.
-
-Component voltage comes from **saturated single-color feature cards** in a 6-color palette: hot pink, deep teal, lavender, peach, ochre, and cream-card. Each card shows product UI fragments at small scale — Claygent agent runs, sequencer flows, CRM enrichment outputs. The colored card IS the primary visual element on every long-scroll page.
-
-**Key Characteristics:**
-- Cream-tinted white canvas (`{colors.canvas}` — #fffaf0). The warmth differentiates Clay from cool-gray competitor sites.
-- Dark navy/black primary CTAs (`{colors.primary}` — #0a0a0a). Buttons rounded `{rounded.md}` (12px) — friendly modern but not pill.
-- 6-color saturated feature card palette: `{colors.brand-pink}`, `{colors.brand-teal}`, `{colors.brand-lavender}`, `{colors.brand-peach}`, `{colors.brand-ochre}`, `{colors.surface-card}` (cream).
-- 3D claymation illustrations (mountains, characters, abstract shapes) as full-bleed hero artifacts — the brand's most-recognized visual element.
-- Custom rounded Plain Black display typeface at 500 weight with -1 to -2.5px letter-spacing on display sizes.
-- Border radius is generous: `{rounded.md}` (12px) for buttons + inputs, `{rounded.lg}` (16px) for content cards, `{rounded.xl}` (24px) for feature cards. The bigger radius matches the rounded display type's character.
-- Product UI fragments embedded inside colored cards at small scale — agent run logs, sequencer flows, enrichment results.
-- Section rhythm `{spacing.section}` (96px) between major bands.
-- Footer is cream-tinted (`{colors.surface-soft}`) — Clay does NOT use a dark footer. Even the closing band stays warm-light.
+The overall feel: a dark, editorial two-tone site — near-black ground with cream-paper card surfaces — built around large photography of the venue, one red accent color, and a condensed display face for headlines. No claymation, no multi-color card palette, no SaaS-style pricing/tab components — this is a single-page restaurant site, not a product marketing site.
 
 ## Colors
 
-### Brand & Accent
-- **Primary** (`{colors.primary}` — #0a0a0a): All primary CTAs, h1/h2 ink type. Near-black with slight warmth.
-- **Brand Pink** (`{colors.brand-pink}` — #ff4d8b): Hot-pink feature card surface. Sequencer / outbound feature pages.
-- **Brand Teal** (`{colors.brand-teal}` — #1a3a3a): Deep teal-green feature card. Often the featured pricing tier.
-- **Brand Lavender** (`{colors.brand-lavender}` — #b8a4ed): Soft lavender feature card.
-- **Brand Peach** (`{colors.brand-peach}` — #ffb084): Warm peach feature card.
-- **Brand Ochre** (`{colors.brand-ochre}` — #e8b94a): Mustard / ochre feature card and illustration accents.
-- **Brand Mint** (`{colors.brand-mint}` — #a4d4c5): Mint accent on illustrations and small badges.
-- **Brand Coral** (`{colors.brand-coral}` — #ff6b5a): Coral accent for highlights.
+| Token | Tailwind class(es) | Value | Usage |
+|---|---|---|---|
+| `--color-ground` | `bg-ground` | `#15161a` | Page background (`body`), Hero background layer |
+| `--color-surface` | `bg-surface` | `#1d1f24` | Elevated dark sections — footer, `PracticalInfo`, form fields, cards on dark ground |
+| `--color-surface-paper` | `bg-surface-paper` | `#efe6d2` | Cream card surfaces — `MenuTabsCard` |
+| `--color-hairline` | `border-hairline` | `#2c2e35` | 1px borders on dark surfaces (nav, footer, buttons, inputs, photo frames) |
+| `--color-hairline-paper` | `border-hairline-paper` | `#d8cdae` | 1px borders on cream surfaces (menu item rows) |
+| `--color-ink` | `text-ink` | `#f5f1e6` | Primary text and headlines on dark ground |
+| `--color-ink-on-paper` | `text-ink-on-paper` | `#17181c` | Primary text on cream surfaces |
+| `--color-muted` | `text-muted` | `#a19c8f` | Secondary text on dark ground (sub-heads, nav links, footer body) |
+| `--color-muted-on-paper` | `text-muted-on-paper` | `#5c574a` | Secondary text on cream surfaces |
+| `--color-action` | `bg-action` / `text-action` | `#d0010a` | The brand red. Solid fills, icons, accents on light/paper surfaces |
+| `--color-action-strong` | `text-action-strong` / `border-action-strong` | `#e14a52` | Lighter red tint — text/links/hovers directly on dark ground, where `action` alone fails 4.5:1 contrast |
+| `--color-success` | `text-success` etc. | `#4caf6b` | Semantic success (not yet used in a component) |
+| `--color-warning` | `text-warning` etc. | `#e2a13c` | Semantic warning (not yet used in a component) |
+| `--color-error` | `text-error` etc. | `#d1453d` | Semantic error (not yet used in a component) |
 
-### Surface
-- **Canvas** (`{colors.canvas}` — #fffaf0): The default page floor. Cream-tinted white.
-- **Surface Soft** (`{colors.surface-soft}` — #faf5e8): Footer and CTA-band background.
-- **Surface Card** (`{colors.surface-card}` — #f5f0e0): Cream feature cards, testimonial cards.
-- **Surface Strong** (`{colors.surface-strong}` — #ebe6d6): Stronger cream for emphasized bands.
-- **Surface Dark** (`{colors.surface-dark}` — #0a1a1a): Dark teal-tinted near-black for occasional dark cards (rare).
-- **Surface Dark Elevated** (`{colors.surface-dark-elevated}` — #1a2a2a): Elevated dark cards.
-- **Hairline** (`{colors.hairline}` — #e5e5e5): 1px borders on cards and inputs.
-
-### Text
-- **Ink** (`{colors.ink}` — #0a0a0a): Headlines and primary text.
-- **Body Strong** (`{colors.body-strong}` — #1a1a1a): Emphasized body, lead paragraphs.
-- **Body** (`{colors.body}` — #3a3a3a): Default running-text.
-- **Muted** (`{colors.muted}` — #6a6a6a): Sub-headings, breadcrumbs, footer body.
-- **Muted Soft** (`{colors.muted-soft}` — #9a9a9a): Captions, fine-print.
-- **On Primary / On Dark** (`{colors.on-primary}` — #ffffff): Text on primary buttons + dark feature cards (teal).
-
-### Semantic
-- **Success** (`{colors.success}` — #22c55e): Success states.
-- **Warning** (`{colors.warning}` — #f59e0b): Warning callouts.
-- **Error** (`{colors.error}` — #ef4444): Validation errors.
+There is no multi-color brand palette. One accent (`action`/`action-strong`) does all brand-color work — buttons, links, active tab state, badges, eyebrow text.
 
 ## Typography
 
-### Font Family
-The system runs **Plain Black** (a custom rounded display face) for headlines and **Inter** for body, navigation, and UI. Plain Black at weight 500 with negative letter-spacing handles every display headline; Inter handles the rest. The fallback stack walks `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif` for both.
+Two font families, loaded in `app/layout.tsx` via `next/font/google` and exposed as CSS variables:
 
-### Hierarchy
+- **`--font-sans` → Lexend** — `font-sans` (the `<body>` default). Body copy, nav, buttons, form fields, everything that isn't a section headline.
+- **`--font-display` → Oswald** — `font-display`. Section headlines only (`h1`/`h2` via `SectionHeading` and `Hero`).
 
-| Token | Size | Weight | Line Height | Letter Spacing | Use |
-|---|---|---|---|---|---|
-| `{typography.display-xl}` | 72px | 500 | 1.0 | -2.5px | Homepage h1 ("Go to market with unique data") — Plain Black |
-| `{typography.display-lg}` | 56px | 500 | 1.05 | -2px | Section heads — Plain Black |
-| `{typography.display-md}` | 40px | 500 | 1.1 | -1px | Sub-section heads, product names |
-| `{typography.display-sm}` | 32px | 500 | 1.15 | -0.5px | CTA-band heads, feature card titles |
-| `{typography.title-lg}` | 24px | 600 | 1.3 | -0.3px | Pricing plan names, larger feature titles |
-| `{typography.title-md}` | 18px | 600 | 1.4 | 0 | Card titles, intro paragraphs |
-| `{typography.title-sm}` | 16px | 600 | 1.4 | 0 | Small card titles, list labels |
-| `{typography.body-md}` | 16px | 400 | 1.55 | 0 | Default running-text |
-| `{typography.body-sm}` | 14px | 400 | 1.55 | 0 | Footer body, fine-print |
-| `{typography.caption}` | 13px | 500 | 1.4 | 0 | Badge labels, captions |
-| `{typography.caption-uppercase}` | 12px | 600 | 1.4 | 1.5px | Section labels, "FEATURED" badges |
-| `{typography.button}` | 14px | 600 | 1.0 | 0 | Standard button labels |
-| `{typography.nav-link}` | 14px | 500 | 1.4 | 0 | Top-nav menu items |
+| Token | Tailwind class | Size | Weight | Line height | Tracking | Usage |
+|---|---|---|---|---|---|---|
+| `display-xl` | `text-display-xl` | 72px | 600 | 1 | -0.015em | Hero `h1` |
+| `display-lg` | `text-display-lg` | 56px | 600 | 1.05 | -0.01em | Hero `h1` (mobile size, `md:` switches to `display-xl`) |
+| `display-md` | `text-display-md` | 40px | 500 | 1.1 | -0.01em | Section `h2` (`md:` size) |
+| `display-sm` | `text-display-sm` | 32px | 500 | 1.15 | — | Section `h2` (default/mobile size) |
+| `title-lg` | `text-title-lg` | 24px | 600 | 1.3 | — | Not yet used |
+| `title-md` | `text-title-md` | 18px | 600 | 1.4 | — | Not yet used |
+| `title-sm` | `text-title-sm` | 16px | 600 | 1.4 | — | Card/row titles — menu item name, review author name, "Une table, ce soir ?" |
+| `body-md` | `text-body-md` | 16px | 400 | 1.55 | — | Default running text |
+| `body-sm` | `text-body-sm` | 14px | 400 | 1.55 | — | Secondary/smaller copy — review quotes, footer body, form captions |
+| `caption` | `text-caption` | 13px | 500 | 1.4 | — | Fine print, menu item origin line |
+| `caption-uppercase` | `text-caption-uppercase` | 16px | 600 | 1.4 | 0 | Eyebrow labels above headlines, ticker text |
+| `button` | `text-button` | 14px | 600 | 1 | — | Button labels |
+| `nav-link` | `text-nav-link` | 14px | 500 | 1.4 | — | Header/footer nav links |
 
-### Principles
-Plain Black at weight 500 + negative letter-spacing IS the brand voice. Going to weight 700 reads as bombastic; the rounded character of the typeface adds warmth that bolder weight would flatten.
+`SectionHeading` is the canonical pattern: `text-caption-uppercase text-action-strong` eyebrow → `font-display text-display-sm md:text-display-md` title → `text-body-md text-muted` sub. Every section headline on the page follows this exact stack.
 
-The body-vs-display split is functional: Plain Black for Plain Black moments (headlines), Inter for everything else (running text, UI, buttons). Mixing them is a system violation.
+## Radius scale
 
-### Note on Font Substitutes
-If Plain Black is unavailable, **Inter** at weight 500 with -0.05em letter-spacing is a usable approximation. **Söhne Breit** at weight Buch is an alternative if licensed. **Recoleta** at weight 500 carries similar rounded-display warmth.
+| Token | Class | Value | Usage |
+|---|---|---|---|
+| `--radius-xs` | `rounded-xs` | 6px | Not yet used |
+| `--radius-sm` | `rounded-sm` | 8px | Not yet used |
+| `--radius-md` | `rounded-md` | 12px | Buttons, form inputs, mobile menu button |
+| `--radius-lg` | `rounded-lg` | 16px | `PhotoFrame`, `GoogleReviewCard`, inline info panels |
+| `--radius-xl` | `rounded-xl` | 24px | `MenuTabsCard` |
+| `--radius-pill` | `rounded-pill` | 9999px | `Badge`, menu category tabs |
 
-## Layout
+## Spacing
 
-### Spacing System
-- **Base unit:** 4px.
-- **Tokens:** `{spacing.xxs}` 4px · `{spacing.xs}` 8px · `{spacing.sm}` 12px · `{spacing.md}` 16px · `{spacing.lg}` 24px · `{spacing.xl}` 32px · `{spacing.xxl}` 48px · `{spacing.section}` 96px.
-- **Section padding:** `{spacing.section}` (96px) between major editorial bands.
-- **Card internal padding:** `{spacing.xl}` (32px) for feature cards and pricing tiers; `{spacing.lg}` (24px) for testimonial and product mockup cards.
+Base Tailwind numeric scale (4px unit) plus two semantic aliases:
 
-### Grid & Container
-- **Max content width:** ~1280px centered.
-- **Editorial body:** Single 12-column grid; hero often uses 7/5 split (h1 left, illustration right).
-- **Feature card grids:** 3-up at desktop, 2-up at tablet, 1-up at mobile.
-- **Pricing grid:** 3-4 up at desktop, 1-up at mobile.
+- `--spacing-card` → `p-card` = 32px — used as horizontal/bottom padding on `MenuTabsCard`'s content area at `sm:` and up
+- `--spacing-section` → `py-section` = 96px — vertical rhythm between every major page section
 
-### Whitespace Philosophy
-Clay uses generous whitespace around big rounded display headlines and saturated feature cards. The cream canvas + colored cards + 3D illustrations create a playful warmth that competing data-platform sites lack.
-
-## Elevation & Depth
-
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | No shadow, no border | Body sections, top nav, hero |
-| Soft hairline | 1px `{colors.hairline}` border | Inputs, small content cards |
-| Saturated card | Brand pink/teal/lavender/peach/ochre fill — no shadow | Feature cards |
-| Cream card | `{colors.surface-card}` background — no shadow | Testimonial, secondary cards |
-| Subtle drop shadow | Faint shadow at low alpha | Hover-elevated states (rare) |
-
-The system uses no heavy shadows. Depth comes from the saturated color contrast between cream canvas and bright feature cards.
-
-### Decorative Depth
-- **3D claymation illustrations** — mountains, characters, mascots rendered in a hand-crafted 3D style. The brand's most-recognized depth element. Not a token — these are illustrated assets.
-- **Mascot characters** appear as inline figures in feature cards and CTAs.
-
-## Shapes
-
-### Border Radius Scale
-
-| Token | Value | Use |
-|---|---|---|
-| `{rounded.xs}` | 6px | Small badges, dropdown items |
-| `{rounded.sm}` | 8px | Small buttons, hairline-border accent |
-| `{rounded.md}` | 12px | Standard CTA buttons, text inputs |
-| `{rounded.lg}` | 16px | Content cards, testimonial cards, pricing tiers |
-| `{rounded.xl}` | 24px | Feature cards (the saturated brand-color cards) |
-| `{rounded.pill}` | 9999px | Category tabs, badge pills |
-| `{rounded.full}` | 9999px / 50% | Avatars, icon buttons |
+Max content width is 1280px via `Container` (`max-w-[1280px]`, responsive `px-4 md:px-6 lg:px-8`).
 
 ## Components
 
-### Top Navigation
+Only real, implemented components — nothing speculative.
 
-**`top-nav`** — Cream nav bar pinned to top. 64px tall, `{colors.canvas}` background. Carries the Clay logo + wordmark at left, primary horizontal menu (Product, Solutions, Resources, Pricing, Customers) center, right-side cluster with "Sign in" + "Try free" `{component.button-primary}`. Menu items in `{typography.nav-link}` (Inter 14px / 500).
+**`Button`** (`components/primitives/Button.tsx`) — four variants: `primary` (red fill, `bg-action text-ink`), `secondary` (transparent, hairline border), `on-color` (dark fill for use over the red), `text-link` (underlined inline text). All share `h-11 rounded-md px-5 text-button`. Renders `<a>` for external/`tel:`/`mailto:` links, `<Link>` otherwise.
 
-### Buttons
+**`Badge`** (`components/primitives/Badge.tsx`) — two variants: `accent` (translucent red, `rounded-pill`) and `paper` (cream, for use on the paper surface). Used for Hero highlight chips.
 
-**`button-primary`** — Background `{colors.primary}` (near-black), text `{colors.on-primary}` (white), type `{typography.button}` (Inter 14px / 600), padding 12px × 20px, height 44px, rounded `{rounded.md}` (12px).
+**`SectionHeading`** (`components/primitives/SectionHeading.tsx`) — eyebrow + `h2` + optional sub-line, `align` (`left`/`center`) and `light` (for use on `surface-paper`) props. The one canonical section-title pattern, reused by every section.
 
-**`button-secondary`** — Cream button with hairline outline. Background `{colors.canvas}`, text `{colors.ink}`, 1px hairline border.
+**`Container`** (`components/primitives/Container.tsx`) — the only layout-width primitive. Every section wraps its content in one.
 
-**`button-on-color`** — White button used over saturated brand-color feature cards. Same shape as primary but inverted (white background, ink text).
+**`PhotoFrame`** (`components/primitives/PhotoFrame.tsx`) — `rounded-lg`, hairline border, `next/image` `fill`, optional bottom-to-top gradient overlay toward `ground`. The standard way any photo appears outside the Hero background.
 
-**`button-text-link`** — Inline text button, no background. Used for "Sign in" and inline link CTAs.
+**`MenuTabsCard`** (`components/primitives/MenuTabsCard.tsx`) — the paper-surface card: optional header image, pill category tabs (`bg-action` active / `bg-ink-on-paper/5` inactive), animated height transition (Motion) between categories, rows via `MenuItemRow`.
 
-**`text-link`** — Inline body links in `{colors.ink}` with underline.
+**`MenuItemRow`** (`components/primitives/MenuItemRow.tsx`) — name/description/origin on the left, price or price-tier list on the right, hairline-paper divider between rows, fade+rise-in on mount.
 
-### Cards & Containers
+**`GoogleReviewCard`** / **`GoogleReviewsWidget`** (`components/primitives/GoogleReviewCard.tsx`, `GoogleReviewsWidget.tsx`) — white card (note: literal `bg-white`, not a token — the one place the palette is broken; flag if touching this component) with `Avatar`, name, `StarRating`, quote. Widget is a horizontal snap-scroll track with two round hairline-border nav buttons.
 
-**`hero-band`** — Cream-canvas hero with 7-5 grid: h1 + sub-headline + button row on the left, 3D claymation illustration on the right. Vertical padding `{spacing.section}` (96px).
+**`Avatar`** (`components/primitives/Avatar.tsx`) — initials-or-generic-icon circle, cycles through 3 fill variants by index (`bg-action`, `bg-ink-on-paper`, `bg-muted-on-paper`).
 
-**`hero-illustration-card`** — Right-side artifact holding 3D claymation illustration (mountains, mascot character, abstract shapes). Background `{colors.surface-soft}`, rounded `{rounded.xl}` (24px). The illustration IS the artifact.
+**`StarRating`** (`components/primitives/StarRating.tsx`) — fixed 5-star row, hardcoded `#F4B400` gold (decorative, not data-driven — there's no rating field on the testimonial content type).
 
-**`feature-card-pink`** / **`feature-card-teal`** / **`feature-card-lavender`** / **`feature-card-peach`** / **`feature-card-ochre`** — Saturated single-color feature cards. Background varies per variant; rounded `{rounded.xl}` (24px); padding `{spacing.xl}` (32px). Each card carries an h3 in `{typography.title-md}`, a body description, and a product UI fragment or mascot illustration. Text color flips to `{colors.on-dark}` (white) on pink and teal cards, `{colors.ink}` (dark) on lavender/peach/ochre cards (the lighter saturations have enough contrast for dark text).
+**`Logo`** (`components/primitives/Logo.tsx`) — `next/image` wrapping `public/logo.svg`, fixed `h-9`.
 
-**`feature-card-cream`** — Lower-key feature card variant on `{colors.surface-card}`. Used for less-emphasized features that don't warrant a saturated color.
+**`Reveal`** (`components/primitives/Reveal.tsx`) — Motion wrapper: fade + rise (`y: 24 → 0`) on scroll into view, `once: true`. Wraps almost every section's content block; this is the standard entrance animation, not a one-off.
 
-**`product-mockup-card`** — Card showing actual Clay product UI (Claygent agent runs, sequencer flows, CRM enrichment tables). Background `{colors.canvas}` with hairline border, rounded `{rounded.lg}`, padding `{spacing.lg}` (24px).
+**`Parallax`** (`components/primitives/Parallax.tsx`) — scroll-linked transform, used once (Hero background image).
 
-**`testimonial-card`** — Customer quote cards. Background `{colors.surface-card}` (cream), rounded `{rounded.lg}`, padding `{spacing.lg}` (24px). Top row has avatar + name + role; below sits the testimonial in `{typography.body-md}`.
+**`Ticker`** (`components/primitives/Ticker.tsx`) — CSS-keyframe marquee (`animate-marquee`, defined in `globals.css`, respects `prefers-reduced-motion`) for the events strip under the header.
 
-**`pricing-tier-card`** — Standard tier card. Background `{colors.canvas}` with hairline, rounded `{rounded.lg}`, padding `{spacing.xl}` (32px).
+**`SiteHeader`** / **`MobileNav`** / **`SiteFooter`** (`components/layout/`) — all three consume the shared `NAV_LINKS` array from `lib/nav.ts`, a fixed 6-item list of same-page anchor links (`#about`, `#carte`, `#experience`, `#avis`, `#privatisation`, `#infos`). Header is `fixed`, `bg-ground/80 backdrop-blur`. Footer sits on `bg-surface`.
 
-**`pricing-tier-card-featured`** — The featured tier flips to `{colors.brand-teal}` (deep teal-green). The teal surface IS the featured signal.
+**Section components** (`components/sections/*.tsx`) — each wraps `Container` + `Reveal` + `SectionHeading` + section-specific content; each `async`-fetches its own slice of `getHomepage()` (see `CLAUDE.md` for the data-fetching convention, including the server/client split used by `Hero`/`HeroContent` and `PrivatizationCta`/`PrivatizationCtaForm`). `PrivatizationCtaForm` is the one form: plain `<input>`/`<textarea>` styled inline (`fieldClasses` constant, not a token — no shared `TextInput` component yet), submits via `mailto:` link construction, no backend.
 
-**`expert-card`** — Used on /experts page. Background `{colors.canvas}` with hairline, rounded `{rounded.lg}`, padding `{spacing.lg}`. Carries an avatar at top, expert name, specialization, and a "Book session" link.
+## Motion conventions
 
-### Inputs & Forms
-
-**`text-input`** — Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-md}`, rounded `{rounded.md}` (12px), padding 12px × 16px, height 44px. 1px hairline border.
-
-**`text-input-focused`** — Border thickens to ink for emphasis.
-
-### Tabs / Badges
-
-**`category-tab`** + **`category-tab-active`** — Pill-shaped tabs in sub-nav. Inactive: transparent + muted text. Active: cream-card background + ink text. Padding 8px × 16px.
-
-**`badge-pill`** — Small cream-fill pill labels in `{typography.caption}` (13px / 500), rounded `{rounded.pill}`.
-
-### CTA / Footer
-
-**`cta-band-illustrated`** — Pre-footer "Turn your growth ideas into reality today" band. Background `{colors.surface-soft}`, rounded `{rounded.xl}`, padding 80px. Carries an h2 in `{typography.display-md}`, a sub-line, and a `{component.button-primary}` — usually paired with a 3D illustration of a mascot or scene.
-
-**`footer`** — Cream-tinted footer (NOT dark navy unlike most SaaS sites). Background `{colors.surface-soft}`, text `{colors.body}`. 4-column link list. Vertical padding 80px. Often features a horizon-style 3D mountain illustration at the very bottom — Clay's signature footer mountain.
+All animation goes through `motion` (Motion / Framer Motion), configured globally by `MotionProvider` (`app/providers.tsx`) with `reducedMotion="user"` — respects the OS setting everywhere without per-component checks, except `Hero` which also calls `useReducedMotion()` directly to gate its own bespoke transforms. Three vocabulary pieces cover nearly every animation on the site: `Reveal` (scroll-triggered entrance), `Parallax` (Hero background), and Motion's `AnimatePresence`/`animate` for `MenuTabsCard`'s tab-switch. Don't introduce a fourth animation approach without a reason — extend one of these three.
 
 ## Do's and Don'ts
 
 ### Do
-- Anchor every page on the cream canvas (`{colors.canvas}` — #fffaf0). The warm tint differentiates Clay from cool-gray data sites.
-- Use 3D claymation illustrations as hero artifacts. Hand-crafted 3D characters and mountains ARE the brand.
-- Cycle saturated feature cards across the page — pink → teal → lavender → peach → ochre → cream. Repeating the same color twice in a row reads as off-rhythm.
-- Use Plain Black at weight 500 with negative letter-spacing on every display headline.
-- Show product UI fragments inside saturated feature cards. The brand voltage is product-driven, not abstract.
-- Use cream footer (NOT dark). Clay deliberately closes pages with warm cream rather than the standard dark-footer SaaS template.
-- Anchor every band with `{spacing.section}` (96px) vertical rhythm.
+- Use `action` (`#d0010a`) as the only brand accent — buttons, links, active states, eyebrow text.
+- Use `action-strong` (`#e14a52`) instead of `action` for text/links sitting directly on `ground` — `action` alone doesn't clear contrast there.
+- Pair dark-ground components with `ink`/`muted`/`hairline`; pair paper-surface components with `ink-on-paper`/`muted-on-paper`/`hairline-paper`. Don't cross the two token sets on the same surface.
+- Use `font-display` (Oswald) only for section headlines via `SectionHeading`/`Hero`. Everything else is `font-sans` (Lexend).
+- Wrap new section content in `Reveal` for the entrance animation, matching every existing section.
+- Use `Container` for width, `py-section` for vertical rhythm — every section on the page already does.
 
 ### Don't
-- Don't use cool grays for canvas. The cream tint is non-negotiable.
-- Don't use a 7th brand-color card. The 6-color palette is saturated enough.
-- Don't bold display weight beyond 500. Plain Black at 700 reads as bombastic.
-- Don't repeat the same brand-color card twice in a row.
-- Don't replace claymation illustrations with flat vector art. The hand-crafted 3D character IS the brand voice.
-- Don't use a dark footer. The cream footer is part of the system's warm-throughout pacing.
-- Don't add hover state styling beyond what the system already encodes.
+- Don't introduce a second brand color. One red accent is the system.
+- Don't reach for claymation, illustration, or SaaS-style multi-color feature cards — this is a photography-led restaurant site.
+- Don't hardcode a hex value that already has a token above (`GoogleReviewCard`'s `bg-white` is the one existing exception — don't add a second).
+- Don't add a new animation pattern outside `Reveal`/`Parallax`/Motion's built-ins without a stated reason.
 
-## Responsive Behavior
+## Responsive behavior
 
-### Breakpoints
+Breakpoints: Tailwind defaults (`md` 768px, `lg` 1024px) plus one custom one, `--breakpoint-wide` at 1440px (`90rem`), used for extra `Container` padding and Hero's scroll-cue offset.
 
-| Name | Width | Key Changes |
-|---|---|---|
-| Mobile | < 768px | Hamburger nav; hero h1 72→36px; hero-illustration-card stacks below; feature grids 1-up; pricing 1-up |
-| Tablet | 768–1024px | Top nav tightens; feature cards 2-up; pricing 2-up |
-| Desktop | 1024–1440px | Full top-nav; 3-up feature cards; 3-up pricing tiers |
-| Wide | > 1440px | Same as desktop with more breathing room; max content 1280px |
+- **Header/nav**: full horizontal nav + socials + phone button at `md:` and up; below that, a hamburger button opens `MobileNav`.
+- **Hero**: `display-lg` on mobile → `display-xl` at `md:`.
+- **Section grids**: `About` and `PrivatizationCta` go `lg:grid-cols-2`, single column below. `Experience`'s photo gallery is `grid-cols-2` on mobile, `md:grid-cols-4` above.
+- **`PrivatizationCta` form**: name/email `sm:grid-cols-2`; phone/date/guests `md:grid-cols-3`.
 
-### Touch Targets
-- `{component.button-primary}` at minimum 44 × 44px (matches WCAG AAA).
-- `{component.text-input}` height is 44px.
+## Known gaps
 
-### Collapsing Strategy
-- Top nav collapses to hamburger at < 768px.
-- Hero 7-5 grid → single-column on mobile.
-- Feature card grids reduce columns rather than scaling.
-- Saturated feature cards retain their colored fill at every breakpoint.
-- Pricing tier cards collapse 4 → 2 → 1.
-
-## Iteration Guide
-
-1. Focus on ONE component at a time. Reference its YAML key (`{component.feature-card-pink}`, `{component.pricing-tier-card-featured}`).
-2. Pick the right brand-color card for the feature: pink for outbound/sequencer, teal for enterprise/featured, lavender for AI-agent products, peach for general SaaS warmth, ochre for community / experts.
-3. Variants of an existing component (`-active`, `-disabled`) live as separate entries.
-4. Use `{token.refs}` everywhere — never inline hex.
-5. Never document hover.
-6. Display headlines stay Plain Black 500 with negative letter-spacing. Body stays Inter 400.
-7. The cream-throughout palette is a system contract — don't add a dark footer.
-
-## Known Gaps
-
-- Plain Black is licensed to Clay and not available as a public web font; Inter weight 500 with negative letter-spacing is the closest substitute.
-- 3D claymation illustrations are commissioned assets, not system tokens — they're rendered per-page.
-- The mascot characters (named characters that recur across the site) are illustrated assets; their exact lineage and naming are not formalized in tokens.
-- Animation and transition timings (3D illustration parallax on scroll, feature card entrance animations) are not in scope.
-- Form validation states beyond `{component.text-input-focused}` are not extracted.
-- The actual Clay product surface (in-app data tables, formula editor, agent builder) shares some tokens with the marketing site but adds many product-specific components that are out of scope.
+- No dedicated form-input component — `PrivatizationCta` styles `<input>`/`<textarea>` inline via a local `fieldClasses` string. If a second form appears, that's the point to extract a `TextInput` primitive.
+- `success`/`warning`/`error` tokens exist in `globals.css` but nothing consumes them yet.
+- `title-lg` and `title-md` typography tokens exist but aren't used by any current component.
+- `GoogleReviewCard`'s `bg-white` is a hardcoded exception to the token system (see Do's and Don'ts).

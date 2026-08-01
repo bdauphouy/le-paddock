@@ -7,30 +7,25 @@ import { Experience } from "@/components/sections/Experience";
 import { ReviewsSocial } from "@/components/sections/ReviewsSocial";
 import { PracticalInfo } from "@/components/sections/PracticalInfo";
 import { PrivatizationCta } from "@/components/sections/PrivatizationCta";
-import {
-  getActiveSpecialEvents,
-  getHomepage,
-  getSiteSettings,
-} from "@/sanity/lib/fetch";
+import { getActiveSpecialEvents, getSiteSettings } from "@/sanity/lib/fetch";
 
 export default async function Home() {
-  const [settings, events, homepage] = await Promise.all([
+  const [settings, events] = await Promise.all([
     getSiteSettings(),
     getActiveSpecialEvents(),
-    getHomepage(),
   ]);
 
   return (
     <>
       <SiteHeader settings={settings} />
       <main>
-        <Hero settings={settings} events={events} content={homepage.hero} />
+        <Hero settings={settings} events={events} />
         <About />
         <MenuHighlights />
         <Experience />
         <ReviewsSocial />
         <PracticalInfo settings={settings} />
-        <PrivatizationCta settings={settings} content={homepage.privatization} />
+        <PrivatizationCta settings={settings} />
       </main>
       <SiteFooter settings={settings} />
     </>

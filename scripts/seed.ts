@@ -1,3 +1,12 @@
+/**
+ * HISTORICAL — do not run.
+ *
+ * This pushed the initial content into Sanity when the project was
+ * bootstrapped. Live content in the Studio has since diverged from what's
+ * defined here — re-running this script would overwrite it. Not wired to
+ * any package.json script. Kept only as a reference for the original
+ * content shape.
+ */
 import { getCliClient } from "sanity/cli";
 
 import { apiVersion } from "../sanity/env";
